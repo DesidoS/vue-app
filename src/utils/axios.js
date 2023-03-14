@@ -2,7 +2,7 @@ import axios from "axios";
 // import store from "../store";
 
 const axiosInstance = axios.create({
-  baseURL: "https://apt-booking-api.herokuapp.com/",
+  baseURL: "https://contacts-4uyr.onrender.com",
 });
 
 // axiosInstance.interceptors.request.use(

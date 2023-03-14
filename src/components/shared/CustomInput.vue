@@ -3,12 +3,12 @@
     <input
       v-on="listeners"
       v-bind="$attrs"
-      type="number"
       @blur="blurHandler"
       :value="value"
       class="custom-input"
       :class="!isValid && 'custom-input--error'"
-    />
+      />
+      <!-- type="number" -->
     <span v-if="!isValid" class="custom-input__error">{{ error }}</span>
   </div>
 </template>

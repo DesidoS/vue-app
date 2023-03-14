@@ -25,20 +25,22 @@
 </template>
 
 <script>
-import Form from '../../shared/form';
-import CustomInput from '../../shared/CustomInput';
-import Button from '../../shared/Button';
-import AuthContainer from '../AuthContainer';
-import MainTitle from '../../shared/MainTitle';
+import Form from "../../shared/form";
+import CustomInput from "../../shared/CustomInput";
+import Button from "../../shared/Button";
+import AuthContainer from "../AuthContainer";
+import MainTitle from "../../shared/MainTitle";
 import {
   emailValidation,
   passwordValidation,
   isRequired,
-} from '../../../utils/validationRules';
+} from "../../../utils/validationRules";
+import { loginUser } from "../../../services/auth.service";
+
 // import { mapActions } from 'vuex';
 
 export default {
-  name: 'AppLogin',
+  name: "AppLogin",
   components: {
     Form,
     CustomInput,
@@ -50,8 +52,8 @@ export default {
     return {
       loading: false,
       formData: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       },
     };
   },
@@ -70,31 +72,34 @@ export default {
       return [this.rules.isRequired];
     },
   },
-  // methods: {
-  //   ...mapActions('auth', ['login']),
-  //   async handleSubmit() {
-  //     const { form } = this.$refs;
-  //     const isFormValid = form.validate();
+  methods: {
+    // ...mapActions('auth', ['login']),
+    async handleSubmit() {
+      const { form } = this.$refs;
+      const isFormValid = form.validate();
 
-  //     if (isFormValid) {
-  //       try {
-  //         this.loading = true;
-  //         await this.login(this.formData);
+      if (isFormValid) {
+        try {
+          this.loading = true;
+          // await this.login(this.formData);
 
-  //         this.$router.push({ name: 'homepage' });
-  //         form.reset();
-  //       } catch (error) {
-  //         this.$notify({
-  //           type: 'error',
-  //           title: 'Произошла ошибка',
-  //           text: error.message,
-  //         });
-  //       } finally {
-  //         this.loading = false;
-  //       }
-  //     }
-  //   },
-  // },
+          const { data } = await loginUser(this.formData);
+          console.log("handleSubmit  data:", data);
+
+          this.$router.push({ name: "homepage" });
+          form.reset();
+        } catch (error) {
+          this.$notify({
+            type: "error",
+            title: "Произошла ошибка",
+            text: error.message,
+          });
+        } finally {
+          this.loading = false;
+        }
+      }
+    },
+  },
 };
 </script>
 

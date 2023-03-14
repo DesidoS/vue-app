@@ -27,7 +27,7 @@
         :rules="passwordRules"
         class="registration__input"
       />
-      <CustomInput
+      <!-- <CustomInput
         v-model="formData.confirmPassword"
         placeholder="Confirm password"
         autocomplete="current-password"
@@ -35,7 +35,7 @@
         name="password"
         :rules="confirmPassword"
         class="registration__input"
-      />
+      /> -->
       <Button class="registration__btn" type="submit" :loading="loading"
         >Вход</Button
       >
@@ -54,6 +54,7 @@ import {
   passwordValidation,
   isRequired,
 } from "../../../utils/validationRules";
+import { registerUser } from "../../../services/auth.service";
 // import { mapActions } from 'vuex';
 
 export default {
@@ -72,7 +73,7 @@ export default {
         name: "",
         email: "",
         password: "",
-        confirmPassword: "",
+        // confirmPassword: "",
       },
     };
   },
@@ -93,46 +94,50 @@ export default {
     passwordRules() {
       return [this.rules.isRequired, this.rules.passwordValidation];
     },
-    confirmPassword() {
-      return [
-        (val) => ({
-          hasPassed: val === this.formData.password,
-          message: "Пароли не совпадают",
-        }),
-      ];
+    // confirmPassword() {
+    //   return [
+    //     (val) => ({
+    //       hasPassed: val === this.formData.password,
+    //       message: "Пароли не совпадают",
+    //     }),
+    //   ];
+    // },
+  },
+  methods: {
+    // ...mapActions('auth', ['registerUser']),
+    async handleSubmit() {
+      const { form } = this.$refs;
+      const isFormValid = form.validate();
+      // const { name, password, email } = this.formData;
+
+      if (isFormValid) {
+        try {
+          this.loading = true;
+
+          const { data } = await registerUser(this.formData);
+          console.log("handleSubmit  data:", data);
+          // await this.registerUser({
+          //   name,
+          //   password,
+          //   email,
+          // });
+
+          this.$router.push({ name: "homepage" });
+          form.reset();
+        } catch (error) {
+          console.log("handleSubmit  error:", error);
+
+          this.$notify({
+            type: "error",
+            title: "Произошла ошибка",
+            text: error.message,
+          });
+        } finally {
+          this.loading = false;
+        }
+      }
     },
   },
-  // methods: {
-  //   ...mapActions('auth', ['registerUser']),
-  //   async handleSubmit() {
-  //     const { form } = this.$refs;
-  //     const isFormValid = form.validate();
-  //     const { name, password, email } = this.formData;
-
-  //     if (isFormValid) {
-  //       try {
-  //         this.loading = true;
-
-  //         await this.registerUser({
-  //           name,
-  //           password,
-  //           email,
-  //         });
-
-  //         this.$router.push({ name: 'homepage' });
-  //         form.reset();
-  //       } catch (error) {
-  //         this.$notify({
-  //           type: 'error',
-  //           title: 'Произошла ошибка',
-  //           text: error.message,
-  //         });
-  //       } finally {
-  //         this.loading = false;
-  //       }
-  //     }
-  //   },
-  // },
 };
 </script>
 
