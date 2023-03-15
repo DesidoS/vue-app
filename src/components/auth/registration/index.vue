@@ -54,8 +54,8 @@ import {
   passwordValidation,
   isRequired,
 } from "../../../utils/validationRules";
-import { registerUser } from "../../../services/auth.service";
-// import { mapActions } from 'vuex';
+// import { registerUser } from "../../../services/auth.service";
+import { mapActions } from 'vuex';
 
 export default {
   name: "AppRegistration",
@@ -104,23 +104,23 @@ export default {
     // },
   },
   methods: {
-    // ...mapActions('auth', ['registerUser']),
+    ...mapActions('auth', ['registerUser']),
     async handleSubmit() {
       const { form } = this.$refs;
       const isFormValid = form.validate();
-      // const { name, password, email } = this.formData;
+      const { name, password, email } = this.formData;
 
       if (isFormValid) {
         try {
           this.loading = true;
 
-          const { data } = await registerUser(this.formData);
-          console.log("handleSubmit  data:", data);
-          // await this.registerUser({
-          //   name,
-          //   password,
-          //   email,
-          // });
+          // const { data } = await registerUser(this.formData);
+          // console.log("handleSubmit  data:", data);
+          await this.registerUser({
+            name,
+            password,
+            email,
+          });
 
           this.$router.push({ name: "homepage" });
           form.reset();

@@ -1,6 +1,6 @@
 import VueRouter from "vue-router";
 import ErrorPage from "./pages/ErrorPage";
-// import store from "./store";
+import store from "./store";
 
 const Homepage = () => import("./pages/Homepage");
 const Apartment = () => import("./pages/Apartment");
@@ -58,22 +58,22 @@ const router = new VueRouter({
   mode: "history",
 });
 
-// router.beforeEach((to, from, next) => {
-//   const isLoggedIn = store.getters["auth/isLoggedIn"];
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = store.getters["auth/isLoggedIn"];
 
-//   if (to.matched.some((record) => record.meta.requiresAuth)) {
-//     if (!isLoggedIn) {
-//       next({ name: "login-page" });
-//     }
-//   }
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!isLoggedIn) {
+      next({ name: "login-page" });
+    }
+  }
 
-//   if (to.matched.some((record) => record.meta.hideForAuth)) {
-//     if (isLoggedIn) {
-//       next({ name: "homepage" });
-//     }
-//   }
+  if (to.matched.some((record) => record.meta.hideForAuth)) {
+    if (isLoggedIn) {
+      next({ name: "homepage" });
+    }
+  }
 
-//   next();
-// });
+  next();
+});
 
 export default router;

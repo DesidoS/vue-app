@@ -5,8 +5,8 @@
         <router-link to="/">
           <Logo />
         </router-link>
-        <!-- <AccountActions v-if="isLoggedIn" /> 
-        <AuthActions v-else /> -->
+        <AccountActions v-if="isLoggedIn" />
+        <AuthActions v-else />
       </div>
     </Container>
   </header>
@@ -15,21 +15,21 @@
 <script>
 import Container from "../shared/Container";
 import Logo from "../Logo";
-// import AuthActions from './AuthActions';
-// import AccountActions from './AccountActions';
-// import { mapGetters } from 'vuex';
+import AuthActions from "./AuthActions";
+import AccountActions from "./AccountActions";
+import { mapGetters } from "vuex";
 
 export default {
   name: "AppHeader",
   components: {
     Container,
     Logo,
-    // AuthActions,
-    // AccountActions,
+    AuthActions,
+    AccountActions,
   },
-  //   computed: {
-  //     ...mapGetters('auth', ['isLoggedIn']),
-  //   },
+  computed: {
+    ...mapGetters("auth", ["isLoggedIn"]),
+  },
 };
 </script>
 
