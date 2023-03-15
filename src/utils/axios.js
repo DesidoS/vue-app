@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "../store";
 
 const axiosInstance = axios.create({
-  baseURL: "https://contacts-4uyr.onrender.com",
+  baseURL: process.env.VUE_APP_SERVECE_BASE_URL,
 });
 
 axiosInstance.interceptors.request.use(
