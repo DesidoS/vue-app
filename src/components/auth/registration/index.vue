@@ -1,6 +1,6 @@
 <template>
   <AuthContainer class="registration">
-    <MainTitle class="registration__title">Регистрация</MainTitle>
+    <MainTitle class="registration__title">Sign Up</MainTitle>
     <Form ref="form" class="registration__form" @submit.prevent="handleSubmit">
       <CustomInput
         v-model="formData.name"
@@ -37,7 +37,7 @@
         class="registration__input"
       /> -->
       <Button class="registration__btn" type="submit" :loading="loading"
-        >Вход</Button
+        >Enter</Button
       >
     </Form>
   </AuthContainer>
@@ -54,7 +54,6 @@ import {
   passwordValidation,
   isRequired,
 } from "../../../utils/validationRules";
-// import { registerUser } from "../../../services/auth.service";
 import { mapActions } from 'vuex';
 
 export default {
@@ -113,9 +112,6 @@ export default {
       if (isFormValid) {
         try {
           this.loading = true;
-
-          // const { data } = await registerUser(this.formData);
-          // console.log("handleSubmit  data:", data);
           await this.registerUser({
             name,
             password,
@@ -125,11 +121,10 @@ export default {
           this.$router.push({ name: "homepage" });
           form.reset();
         } catch (error) {
-          console.log("handleSubmit  error:", error);
 
           this.$notify({
             type: "error",
-            title: "Произошла ошибка",
+            title: "Error",
             text: error.message,
           });
         } finally {

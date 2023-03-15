@@ -23,8 +23,8 @@ import ApartmentsMainInfo from "../components/apartment/ApartmentsMainInfo";
 import ApartmentsOwner from "../components/apartment/AprtmentsOwner";
 import Reviews from '../components/reviews';
 import reviewsList from '../components/reviews/reviews.json';
-// import { getApartmentById } from '../services/apartments.service';
 import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
+// import { getApartmentById } from '../services/apartments.service';
 
 import apartments from "../components/apartment/apartments.js";
 

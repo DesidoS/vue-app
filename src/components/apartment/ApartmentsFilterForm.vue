@@ -3,12 +3,12 @@
     <CustomSelect :items="cities" v-model="city" class="form__select" />
     <CustomInput
       v-model="price"
-      placeholder="Цена, от"
-      error-message="Не должно быть пустым"
+      placeholder="Price from"
+      error-message="Required field"
       :rules="rules"
     />
     <SubmitButton class="form__submit" type="submit">
-      Подбор жилья
+      Choice of housing
     </SubmitButton>
   </form>
 </template>
@@ -37,7 +37,7 @@ export default {
     },
     cities() {
       return [
-        { value: "", label: "Город", selected: true },
+        { value: "", label: "City", selected: true },
         "Kyiv",
         "Odesa",
         "Poltava",

@@ -10,6 +10,11 @@ const MyOrdersPage = () => import("./pages/MyOrders");
 
 const routes = [
   {
+    path: "*",
+    component: ErrorPage,
+    name: "error-page",
+  },
+  {
     path: "/",
     component: Homepage,
     name: "homepage",
@@ -45,11 +50,6 @@ const routes = [
     meta: {
       hideForAuth: true,
     },
-  },
-  {
-    path: "*",
-    component: ErrorPage,
-    name: "error-page",
   },
 ];
 

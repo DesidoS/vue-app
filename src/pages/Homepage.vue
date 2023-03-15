@@ -5,7 +5,7 @@
         <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
       </Container>
       <Container>
-        <p v-if="!filteredApartments.length">Ничего не найдено</p>
+        <p v-if="!filteredApartments.length">Nothing found</p>
         <ApartmentsList v-else :items="filteredApartments" />
       </Container>
     </SectionWithHeaderSpacer>

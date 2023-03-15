@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import AuthSection from '../components/auth/AuthSection';
-import RegistrationForm from '../components/auth/registration';
+import AuthSection from "../components/auth/AuthSection";
+import RegistrationForm from "../components/auth/registration";
 
 export default {
-  name: 'RegistrationPage',
+  name: "RegistrationPage",
   components: {
     AuthSection,
     RegistrationForm,

@@ -14,7 +14,6 @@
           :to="{ name: 'apartment', params: { id } }"
           class="apartments-item__link"
         ></router-link>
-        <!--  query: { name: 'John' } } -->
       </div>
     </div>
   </div>

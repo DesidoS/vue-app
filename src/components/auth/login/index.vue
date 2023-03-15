@@ -1,6 +1,6 @@
 <template>
   <AuthContainer class="login">
-    <MainTitle class="login__title">Логин</MainTitle>
+    <MainTitle class="login__title">Login</MainTitle>
     <Form ref="form" class="login__form" @submit.prevent="handleSubmit">
       <CustomInput
         v-model="formData.email"
@@ -19,7 +19,7 @@
         :rules="passwordRules"
         class="login__input"
       />
-      <Button class="login__btn" type="submit" :loading="loading">Вход</Button>
+      <Button class="login__btn" type="submit" :loading="loading">Enter</Button>
     </Form>
   </AuthContainer>
 </template>
@@ -35,7 +35,6 @@ import {
   passwordValidation,
   isRequired,
 } from "../../../utils/validationRules";
-// import { loginUser } from "../../../services/auth.service";
 
 import { mapActions } from "vuex";
 
@@ -82,16 +81,12 @@ export default {
         try {
           this.loading = true;
           await this.login(this.formData);
-
-          // const { data } = await loginUser(this.formData);
-          // console.log("handleSubmit  data:", data);
-
           this.$router.push({ name: "homepage" });
           form.reset();
         } catch (error) {
           this.$notify({
             type: "error",
-            title: "Произошла ошибка",
+            title: "Error",
             text: error.message,
           });
         } finally {

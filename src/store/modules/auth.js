@@ -40,7 +40,6 @@ export default {
       commit("setToken", token);
     },
     async logout({ commit }) {
-      console.log("logout  commit:", commit)
       await logout();
       commit("clearUserData");
     },

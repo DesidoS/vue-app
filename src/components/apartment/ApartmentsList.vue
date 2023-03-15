@@ -1,6 +1,5 @@
 <template>
-    <Container>
-      <!-- <slot name="title"></slot> -->
+  <Container>
     <div class="apartments-list">
       <ApartmentsItem
         v-for="{ id, descr, price, rating, imgUrl } in items"
@@ -13,8 +12,6 @@
       />
     </div>
   </Container>
-        <!-- <template v-for="apartment in items">
-            <slot name="apartment" v-bind:apartment="apartment"></slot> -->
 </template>
 
 <script>

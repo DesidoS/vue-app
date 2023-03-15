@@ -1,17 +1,13 @@
 <template>
   <div class="orders-item">
-    <img
-      class="orders-item__photo"
-      :src="order.imgUrl"
-      alt="фото апартаментов"
-    />
+    <img class="orders-item__photo" :src="order.imgUrl" alt="photo apartment" />
     <div class="orders-item__details">
       <div class="orders-item__text">
         <h2 class="orders-item__title">{{ order.title }}</h2>
         <p class="orders-item__location">{{ order.location.city }}</p>
       </div>
       <div class="orders-item__cost">
-        <span class="orders-item__price">UAH {{ order.price }}</span> за ночь
+        <span class="orders-item__price">UAH {{ order.price }}</span> per night
       </div>
     </div>
   </div>
@@ -19,7 +15,7 @@
 
 <script>
 export default {
-  name: 'OrdersItem',
+  name: "OrdersItem",
   props: {
     order: {
       type: Object,

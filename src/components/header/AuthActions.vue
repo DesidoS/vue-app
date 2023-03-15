@@ -1,11 +1,11 @@
 <template>
   <div class="auth-actions">
     <router-link class="auth-actions__link" :to="{ name: 'login-page' }">
-      Вход
+      Sign in
     </router-link>
     /
     <router-link class="auth-actions__link" :to="{ name: 'registration-page' }">
-      Регистрация
+      Sign out
     </router-link>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/variables.scss';
+@import "../../assets/scss/variables.scss";
 
 .auth-actions {
   color: #fff;

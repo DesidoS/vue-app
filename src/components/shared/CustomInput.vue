@@ -8,7 +8,6 @@
       class="custom-input"
       :class="!isValid && 'custom-input--error'"
       />
-      <!-- type="number" -->
     <span v-if="!isValid" class="custom-input__error">{{ error }}</span>
   </div>
 </template>
