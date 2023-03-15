@@ -5,7 +5,7 @@
     </router-link>
     /
     <router-link class="auth-actions__link" :to="{ name: 'registration-page' }">
-      Sign out
+      Sign up
     </router-link>
   </div>
 </template>
