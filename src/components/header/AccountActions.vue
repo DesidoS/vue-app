@@ -5,9 +5,9 @@
     </button>
     <ul v-show="isOpen" class="account-actions__list">
       <li class="account-actions__item">
-        <!-- <router-link class="account-actions__link" :to="{ name: 'my-orders' }"
-          >Мои заказы</router-link
-        > -->
+        <router-link class="account-actions__link" :to="{ name: 'my-orders' }"
+          >My orders</router-link
+        >
       </li>
       <li class="account-actions__item">
         <button @click="handleLogout" class="account-actions__logout">
